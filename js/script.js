@@ -207,17 +207,15 @@ function deleteOneNum(){
       }else {
         // console.log(arrayOfLosers.id);
         document.querySelector(".removed-part").innerHTML = `
-        <div id="score">Score = ${score}</div>
+        <div id="score">Score = Score = ${score}</div>
         <input id="loserName" placeholder="Enter Your Name"></input>
-        <button id="submit" onclick="takeDataAndRefreshThePage()">Submit</button>
+        <button id="submit" onclick="takeDataAndRefreshThePage(${score})">Submit</button>
       `
       } 
     }
-function takeDataAndRefreshThePage(){
+function takeDataAndRefreshThePage(score){
   if(document.querySelector("#loserName").value != ""){
-    takeLoserData();
-    getDataFromLocalStorage()
-      // console.log(arrayOfLosers);
+    takeLoserData(score);
   } else {
     refreshPage();
   }
@@ -323,7 +321,7 @@ function takeLoserData(){
 
     result = performOperation(number1,number2, randomOperation);
     document.querySelector(".removed-part").innerHTML = `
-    <div id="score">Score = ${score = 0}</div>
+    <div id="score">Score = ${score += 10}</div>
     <div id="equation">${number1} ${randomOperation} ${number2} = ??</div>
       <div class="column">
               <div class="row">
@@ -362,7 +360,7 @@ function takeLoserData(){
         document.querySelector(".removed-part").innerHTML = `
         <div id="score">Score = ${score}</div>
         <input id="loserName" placeholder="Enter Your Name"></input>
-        <button id="submit" onclick="takeDataAndRefreshThePage()">Submit</button>
+        <button id="submit" onclick="takeDataAndRefreshThePage(${score})">Submit</button>
       `
     }
   }

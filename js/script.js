@@ -207,7 +207,7 @@ function deleteOneNum(){
       }else {
         // console.log(arrayOfLosers.id);
         document.querySelector(".removed-part").innerHTML = `
-        <div id="score">Score = Score = ${score}</div>
+        <div id="score">Score = ${score}</div>
         <input id="loserName" placeholder="Enter Your Name"></input>
         <button id="submit" onclick="takeDataAndRefreshThePage(${score})">Submit</button>
       `
@@ -229,17 +229,18 @@ function takeDataAndRefreshThePage(score){
   
 }
 
-function takeLoserData(){
+function takeLoserData(score){
   let loserObj = {
     rank: arrayOfLosers.length+1,
     score: score,
     name: document.querySelector("#loserName").value,
   }
   arrayOfLosers.push(loserObj);
-  window.localStorage.getItem("Loser", JSON.stringify(arrayOfLosers));
+  window.localStorage.setItem("Loser", JSON.stringify(arrayOfLosers));
   document.querySelector("#loserName").value = "";
   // refreshPage();
   createTableForLosers(arrayOfLosers); 
+  // getDataFromLocalStorage();
   }
 
     function addLoserToLocalStorage(){
@@ -321,7 +322,7 @@ function takeLoserData(){
 
     result = performOperation(number1,number2, randomOperation);
     document.querySelector(".removed-part").innerHTML = `
-    <div id="score">Score = ${score += 10}</div>
+    <div id="score">${score += 10}</div>
     <div id="equation">${number1} ${randomOperation} ${number2} = ??</div>
       <div class="column">
               <div class="row">
